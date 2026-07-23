@@ -18,6 +18,21 @@ public class BlockLog {
 
         this.id = UUID.randomUUID();
 
+        // Validación 1: UserId obligatorio
+        if (userId == null) {
+            throw new IllegalArgumentException("El userId no puede ser nulo");
+        }
+
+        // Validación 2: BlockedItemId obligatorio
+        if (blockedItemId == null) {
+            throw new IllegalArgumentException("El blockedItemId no puede ser nulo");
+        }
+
+        // Validación 3: Fecha no puede ser futura
+        if (blockedAt != null && blockedAt.isAfter(LocalDateTime.now())) {
+            throw new IllegalArgumentException("La fecha de bloqueo no puede ser futura");
+        }
+
         // Validación Condicional 1: AUTO requiere ruleId
         if (blockType == BlockType.AUTO && ruleId == null) {
             throw new IllegalArgumentException(
