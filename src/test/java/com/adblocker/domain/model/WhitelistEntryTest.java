@@ -41,7 +41,7 @@ class WhitelistEntryTest {
 
     @Test
     void shouldThrowExceptionWhenDomainHasInvalidFormat() {
-        // Arrange: Dominio sin punto (formato inválido)
+        // Arrange: Dominio sin punto
         String validUserId = "user-123";
         String invalidDomain = "examplecom"; // Sin "."
         LocalDateTime addedAt = LocalDateTime.now();
@@ -52,7 +52,7 @@ class WhitelistEntryTest {
 
     @Test
     void shouldCreateValidWhitelistEntrySuccessfully() {
-        // Arrange: Datos válidos sin fecha de expiración (permanente)
+        // Arrange: Datos válidos sin fecha de expiración
         String userId = "user-123";
         String domain = "example.com";
         LocalDateTime addedAt = LocalDateTime.now();
