@@ -63,4 +63,11 @@ public class BlockLog {
     public UUID getRuleId() { return ruleId; }
     public LocalDateTime getBlockedAt() { return blockedAt; }
     public boolean wasSuccessful() { return wasSuccessful; }
+
+    public void markAsFailed() {
+        if (!this.wasSuccessful) {
+            throw new IllegalStateException("No se puede marcar como fallido un log que ya está fallido");
+        }
+        this.wasSuccessful = false;
+    }
 }
